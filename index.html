@@ -166,6 +166,23 @@ a { color: inherit; }
   font-size: clamp(20px, 2vw, 26px);
 }
 
+/* Only on touch screens held upright: the decks show still pictures in
+   that orientation and animate once the screen is wider than it is tall
+   (the same max-aspect-ratio: 1/1 test the slide player uses). Hidden for
+   Reduce Motion users, because their decks stay still either way. */
+.rotate-tip {
+  display: none;
+  margin-top: 22px;
+  max-width: 34ch;
+  color: var(--ice-cyan);
+  font-size: 20px;
+}
+.rotate-tip strong { color: var(--spark-yellow); }
+
+@media (max-aspect-ratio: 1/1) and (pointer: coarse) and (prefers-reduced-motion: no-preference) {
+  .rotate-tip { display: block; }
+}
+
 .pack-list {
   list-style: none;
   display: grid;
@@ -330,6 +347,7 @@ a:focus-visible {
     <p class="eyebrow">SESSION PACKS  /  60 MINUTES EACH</p>
     <h2>Choose your mission.</h2>
     <p class="lead">Think it. Try it. Explain it.</p>
+    <p class="rotate-tip"><strong>Tip:</strong> turn your phone or tablet sideways to watch the slides come alive.</p>
 
     <ol class="pack-list">
       <li class="pack">
